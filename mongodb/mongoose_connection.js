@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var url = "mongodb://localhost:27500/people";
+var url = "mongodb://localhost:27500/politics";
 mongoose.connect(url, {
     useMongoClient: true
 });

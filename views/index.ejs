@@ -13,8 +13,8 @@
 
 <body ng-app="presidents">
     <h1>Political History</h1>
-
     <div ng-controller="data">
+            <p>no. of presidents: {{presidents.length}}</p>
         <h4>{{message}}</h4>
         <h2>CREATE</h2>
         <form>
@@ -46,7 +46,7 @@
                 </tr>
             </thead>
             <tbody ng-repeat="president in presidents">
-                <tr ng-class="{'democrat': president.party == Democrat, 'republican': president.party == Republican}">
+                <tr ng-class="{'democratic': president.party == Democratic, 'republican': president.party == Republican}">
                     <td>{{president.number}}</td>
                     <td>
                         <input type="text" ng-model="president.president">
@@ -67,7 +67,7 @@
                         <input type="text" ng-model="president.party">
                     </td>
                     <td>
-                        <span ng-if="president.party == 'Democrat'">
+                        <span ng-if="president.party == 'Democratic'">
                             <img src="images/democrat.png" alt="">
                         </span>
                         <span ng-if="president.party == 'Republican'">

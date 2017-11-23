@@ -10,6 +10,7 @@ function do_data($scope, $http) {
         console.log('reading data from backend');
         $http.get('/api/v4/read').then(function (presidents) {
             $scope.presidents = presidents.data;
+            console.log($scope.presidents);
         });
     }
     $scope.read();

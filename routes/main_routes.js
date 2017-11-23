@@ -26,9 +26,13 @@ router.post('/api/v4/create', do_create);
 router.put('/api/v4/update', do_update);
 router.delete('/api/v4/delete/:_id', do_delete);
 
+
+
 function do_read(req, res) {
     console.log('reading all data');
-    PRESIDENTCLASS.find().then(function (results) {
+    PRESIDENTCLASS.find().sort({
+        number: 1
+    }).then(function (results) {
         console.log(results);
         res.json(results);
     });
@@ -83,7 +87,7 @@ function do_update(req, res) {
 function do_delete(req, res) {
     console.log('deleting president');
     console.log(req.params);
-   PRESIDENTCLASS.findByIdAndRemove(req.params._id).then(function (result) {
+    PRESIDENTCLASS.findByIdAndRemove(req.params._id).then(function (result) {
         console.log(result);
         res.json({
             message: 'deleted!'
