@@ -2,6 +2,7 @@ console.log('loaded frontend_app');
 
 var frontend_app = angular.module('presidents', []);
 frontend_app.controller('data', do_data);
+$scope.searchPresident = '';
 
 function do_data($scope, $http) {
     console.log('inside dodata');
@@ -67,4 +68,5 @@ function do_data($scope, $http) {
         });
     }
     $scope.dropdown();
+
 }
