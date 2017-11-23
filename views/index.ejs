@@ -18,12 +18,11 @@
         <h4>{{message}}</h4>
         <h2>CREATE</h2>
         <form>
-            <input type="text" placeholder="name" ng-model="input_name">
-            <input type="text" placeholder="name" ng-model="input_president">
-            <input type="text" placeholder="name" ng-model="input_birth_year">
-            <input type="text" placeholder="name" ng-model="input_death_year">
-            <input type="text" placeholder="name" ng-model="input_took_office">
-            <input type="text" placeholder="name" ng-model="input_left_office">
+            <input type="text" placeholder="president" ng-model="input_president">
+            <input type="text" placeholder="birth year" ng-model="input_birth_year">
+            <input type="text" placeholder="death year" ng-model="input_death_year">
+            <input type="text" placeholder="took office" ng-model="input_took_office">
+            <input type="text" placeholder="left office" ng-model="input_left_office">
             <select ng-model="input_party">
                 <option ng-repeat="party in party">{{party}}</option>
             </select>
@@ -41,20 +40,51 @@
                     <th>took office</th>
                     <th>left office</th>
                     <th>party</th>
+                    <th></th>
                     <th>UPDATE</th>
                     <th>DELETE</th>
                 </tr>
             </thead>
             <tbody ng-repeat="president in presidents">
-
+                <tr ng-class="{'democrat': president.party == Democrat, 'republican': president.party == Republican}">
+                    <td>{{president.number}}</td>
+                    <td>
+                        <input type="text" ng-model="president.president">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="president.birth_year">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="president.death_year">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="president.took_office">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="president.left_office">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="president.party">
+                    </td>
+                    <td>
+                        <span ng-if="president.party == 'Democrat'">
+                            <img src="images/democrat.png" alt="">
+                        </span>
+                        <span ng-if="president.party == 'Republican'">
+                            <img src="images/republican.png" alt="">
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" ng-click="update(president)">update</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="delete(president)">delete</button>
+                    </td>
+                </tr>
 
             </tbody>
 
-
-
         </table>
-
-
 
     </div>
 </body>
