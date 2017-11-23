@@ -36,13 +36,13 @@ function do_data($scope, $http) {
     $scope.update = function (president) {
         console.log('updating president');
         var data = {
-            number: president.number,
-            president: president.president,
-            birth_year: president.birth_year,
-            death_year: president.death_year,
-            took_office: president.took_office,
-            left_office: president.left_office,
-            party: president.party
+            number: $scope.number,
+            president: $scope.president,
+            birth_year: $scope.birth_year,
+            death_year: $scope.death_year,
+            took_office: $scope.took_office,
+            left_office: $scope.left_office,
+            party: $scope.party
         }
         $http.put('/api/v4/update', data).then(function (result) {
             console.log(result);
