@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Political History</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,10 +10,53 @@
     <script src="js/frontend_app.js"></script>
 
 </head>
+
 <body ng-app="presidents">
     <h1>Political History</h1>
 
-    
+    <div ng-controller="data">
+        <h4>{{message}}</h4>
+        <h2>CREATE</h2>
+        <form>
+            <input type="text" placeholder="name" ng-model="input_name">
+            <input type="text" placeholder="name" ng-model="input_president">
+            <input type="text" placeholder="name" ng-model="input_birth_year">
+            <input type="text" placeholder="name" ng-model="input_death_year">
+            <input type="text" placeholder="name" ng-model="input_took_office">
+            <input type="text" placeholder="name" ng-model="input_left_office">
+            <select ng-model="input_party">
+                <option ng-repeat="party in party">{{party}}</option>
+            </select>
+            <button class="btn btn-primary" ng-click="create()">create president</button>
+        </form>
 
+        <h2>READ</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>number</th>
+                    <th>president</th>
+                    <th>birth year</th>
+                    <th>death year</th>
+                    <th>took office</th>
+                    <th>left office</th>
+                    <th>party</th>
+                    <th>UPDATE</th>
+                    <th>DELETE</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="president in presidents">
+
+
+            </tbody>
+
+
+
+        </table>
+
+
+
+    </div>
 </body>
+
 </html>
