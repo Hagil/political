@@ -2,7 +2,17 @@ console.log('loaded frontend_app');
 
 var frontend_app = angular.module('presidents', []);
 frontend_app.controller('data', do_data);
-$scope.searchPresident = '';
+//$scope.searchPresident = '';
+
+//   // function to submit the form after all validation has occurred            
+//   $scope.submitForm = function(isValid) {
+    
+//         // check to make sure the form is completely valid
+//         if (isValid) {
+//           alert('president added');
+//         }
+//         $scope.submitted = true;
+//       };
 
 function do_data($scope, $http) {
     console.log('inside dodata');
@@ -37,16 +47,8 @@ function do_data($scope, $http) {
 
     $scope.update = function (president) {
         console.log('updating president');
-        var data = {
-            number: $scope.number,
-            president: $scope.president,
-            birth_year: $scope.birth_year,
-            death_year: $scope.death_year,
-            took_office: $scope.took_office,
-            left_office: $scope.left_office,
-            party: $scope.party
-        }
-        $http.put('/api/v4/update', data).then(function (result) {
+  
+        $http.put('/api/v4/update', president).then(function (result) {
             console.log(result);
             $scope.message = result.data.message;
             $scope.read();
