@@ -19,29 +19,46 @@
         <h4>{{message}}</h4>
         <h2>CREATE</h2>
         <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
-            <input type="text" placeholder="number" ng-model="input_number">
+           <div> <label>Number</label>
+            <input type="text" placeholder="number" class="form-control" ng-model="input_number"></div>
 
             <div class="form-group" ng-class="{ 'has-error' : userForm.president.$invalid && !userForm.president.$pristine && submitted }">
-                <input type="text" placeholder="president" name="president" ng-model="input_president" class="form-control" ng-minlength="5" required>
+                <label>President name</label>
+                <input type="text" placeholder="president" name="president" class="form-control" ng-model="input_president" ng-minlength="5"
+                    required>
                 <p ng-show="userForm.president.$invalid && !userForm.president.$pristine" class="help-block">President's name is required.</p>
                 <p ng-show="userForm.president.$error.minlength" class="help-block">Name is too short.</p>
             </div>
-
-            <input type="text" placeholder="birth year" ng-model="input_birth_year">
-
-            <input type="text" placeholder="death year" ng-model="input_death_year">
-
-            <input type="text" placeholder="took office" ng-model="input_took_office">
-
-            <input type="text" placeholder="left office" ng-model="input_left_office">
-
-            <select ng-model="input_party">
-                <option ng-repeat="party in party">{{party}}</option>
-            </select>
+            <div>
+                <label>Birth year</label>
+                <input type="text" placeholder="birth year" class="form-control" ng-model="input_birth_year">
+            </div>
+            <div>
+                <label>Death year</label>
+                <input type="text" placeholder="death year" class="form-control" ng-model="input_death_year">
+            </div>
+            <div>
+                <label>Took office (Y/M/D)</label>
+                <input type="text" placeholder="took office" class="form-control" ng-model="input_took_office">
+            </div>
+            <div>
+                <label>Left office (Y/M/D)</label>
+                <input type="text" placeholder="left office" class="form-control" ng-model="input_left_office">
+            </div>
+            <div>
+                <label>Political party</label>
+                <select ng-model="input_party" required>
+                    <option ng-repeat="party in party">{{party}}</option>
+                    <p ng-show="userForm.president.$invalid && !userForm.president.$pristine" class="help-block">Party is required.</p>
+                </select>
+            </div>
 
             <button class="btn btn-primary" ng-click="create()">create president</button>
 
-            <input type="text" class="form-control" placeholder="Search presidents" ng-model="searchPresident">
+            <div>
+                <label>Search by name</label>
+                <input type="text" class="form-control" placeholder="Search presidents" ng-model="searchPresident">
+            </div>
 
         </form>
 
